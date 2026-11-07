@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>如何設計一份高效率的 AGENTS.md - AI Knowledge Hub</title>
+    <!-- Google Fonts: Plus Jakarta Sans & Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-[#fcfcfd] text-slate-800 font-sans flex flex-col min-h-screen antialiased selection:bg-slate-900 selection:text-white">
+
+    <!-- 頂部雙層極簡導覽列 -->
+    <header class="sticky top-0 z-50 bg-slate-950/85 backdrop-blur-md border-b border-white/10 text-white transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <a href="../index.html" class="flex items-center gap-3 group">
+                <span class="w-8 h-8 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center font-mono font-bold text-sm tracking-tighter group-hover:bg-white group-hover:text-slate-950 transition duration-300">
+                    KH
+                </span>
+                <span class="text-base font-semibold tracking-wide text-slate-100 group-hover:text-white transition">
+                    Knowledge Hub<span class="text-emerald-400">.</span>
+                </span>
+            </a>
+            
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="../index.html" class="text-slate-400 hover:text-slate-100 transition duration-200">← 返回文章總覽</a>
+                <a href="../AGENTS.md" target="_blank" class="text-slate-400 hover:text-slate-100 transition duration-200 flex items-center gap-1.5">
+                    AGENTS.md 開發規範
+                    <svg class="w-3.5 h-3.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                </a>
+            </nav>
+
+            <div class="flex md:hidden">
+                <a href="../index.html" class="text-xs font-mono bg-white/10 hover:bg-white/20 text-white px-3 py-1.5 rounded-full border border-white/20 transition">
+                    ← 返回首頁
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要內容區 -->
+    <main class="flex-grow max-w-4xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-12">
+        
+        <!-- 文章標頭區塊 -->
+        <div class="mb-10 pb-8 border-b border-slate-200/80">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="px-3 py-1 rounded-md bg-slate-900 text-blue-400 text-xs font-mono font-medium border border-slate-800">
+                    Agent 規範
+                </span>
+                <span class="text-xs font-mono text-slate-400">更新於 2026-11-07 • 7 分鐘閱讀</span>
+            </div>
+
+            <h1 class="text-3xl sm:text-5xl font-bold text-slate-900 tracking-tight leading-tight mb-4">
+                如何設計一份高效率的 <br>
+                <span class="font-serif italic text-emerald-600 font-normal">AGENTS.md / CLAUDE.md</span>
+            </h1>
+
+            <p class="text-slate-600 text-lg leading-relaxed">
+                拆解專案開發規範的核心要素，了解如何撰寫能讓 AI 助手秒懂、精確執行且具備長期可擴充性的規範文件。
+            </p>
+        </div>
+
+        <!-- 文章內容 -->
+        <article class="prose max-w-none text-slate-700 leading-relaxed space-y-8">
+            
+            <p class="text-base sm:text-lg">
+                在與 AI（如 Claude, Cursor, ChatGPT）協作開發時，最常遇到的痛點是：<strong>「每次開啟新對話，AI 都會忘記之前的設計風格與檔案架構」</strong>。
+            </p>
+            <p>
+                建立 <code class="bg-slate-100 text-emerald-700 font-mono text-sm px-2 py-0.5 rounded border border-slate-200">AGENTS.md</code> 或 <code class="bg-slate-100 text-emerald-700 font-mono text-sm px-2 py-0.5 rounded border border-slate-200">CLAUDE.md</code> 就是為了解決這個問題——它是專案的<strong>「系統記憶體與行為指南」</strong>，讓 AI 在閱讀後能立刻掌握專案脈絡，精確產生符合規範的程式碼。
+            </p>
+
+            <blockquote class="p-6 my-6 border-l-4 border-emerald-500 bg-emerald-50/40 rounded-r-2xl text-slate-800 font-medium leading-relaxed shadow-xs">
+                「好的 AGENTS.md 就像是一位資深前端架構師留下的工程手冊，讓接手的 AI 不會犯低級錯誤。」
+            </blockquote>
+
+            <h2 class="text-2xl font-bold text-slate-900 mt-10 mb-4 pb-2 border-b border-slate-200">
+                AGENTS.md 的 5 大核心區塊
+            </h2>
+
+            <div class="space-y-4 my-6">
+                
+                <div class="p-5 rounded-2xl bg-white border border-slate-200/80 shadow-xs">
+                    <h3 class="font-bold text-emerald-700 text-base mb-1">1. 專案目的與範疇 (Project Scope)</h3>
+                    <p class="text-sm text-slate-600">說明這個網站或系統是做什麼的、目標受眾是誰，以及採用的技術棧（如純 HTML + Tailwind CSS CDN，無需 Node.js 建置環境）。</p>
+                </div>
+
+                <div class="p-5 rounded-2xl bg-white border border-slate-200/80 shadow-xs">
+                    <h3 class="font-bold text-emerald-700 text-base mb-1">2. 專案目錄結構 (Directory Structure)</h3>
+                    <p class="text-sm text-slate-600">使用清晰的樹狀結構圖標明 <code class="bg-slate-100 text-slate-700 font-mono text-xs px-1.5 py-0.5 rounded">index.html</code>、<code class="bg-slate-100 text-slate-700 font-mono text-xs px-1.5 py-0.5 rounded">pages/</code>、<code class="bg-slate-100 text-slate-700 font-mono text-xs px-1.5 py-0.5 rounded">css/</code> 等檔案的相對位置，並指定新頁面應放在哪個資料夾。</p>
+                </div>
+
+                <div class="p-5 rounded-2xl bg-white border border-slate-200/80 shadow-xs">
+                    <h3 class="font-bold text-emerald-700 text-base mb-1">3. 視覺風格與 UI 規範 (Design System / UI Rules)</h3>
+                    <p class="text-sm text-slate-600">明確標示配色方案（如背景 <code class="bg-slate-100 text-slate-700 font-mono text-xs px-1.5 py-0.5 rounded">bg-[#fcfcfd]</code>、標題黑 <code class="bg-slate-100 text-slate-700 font-mono text-xs px-1.5 py-0.5 rounded">slate-900</code>）、卡片樣式、標籤格式與字體大小，避免 AI 生成風格不一致的網頁。</p>
+                </div>
+
+                <div class="p-5 rounded-2xl bg-white border border-slate-200/80 shadow-xs">
+                    <h3 class="font-bold text-emerald-700 text-base mb-1">4. 標準 HTML 頁面模板 (Template Architecture)</h3>
+                    <p class="text-sm text-slate-600">提供一份可以直接複製使用的基本 HTML 骨架，包含統一的 <code class="bg-slate-100 text-slate-700 font-mono text-xs px-1.5 py-0.5 rounded">&lt;header&gt;</code> 導覽列與 <code class="bg-slate-100 text-slate-700 font-mono text-xs px-1.5 py-0.5 rounded">&lt;footer&gt;</code> 頁腳，讓 AI 填入內容即可完成新頁面。</p>
+                </div>
+
+                <div class="p-5 rounded-2xl bg-white border border-slate-200/80 shadow-xs">
+                    <h3 class="font-bold text-emerald-700 text-base mb-1">5. AI 操作行為規範與連鎖工作流 (Rules for AI)</h3>
+                    <p class="text-sm text-slate-600">定義嚴格的規則，例如：「新增文章頁面後，必須同步更新 <code class="bg-slate-100 text-slate-700 font-mono text-xs px-1.5 py-0.5 rounded">index.html</code> 的卡片索引」、「檔案命名必須使用 Kebab-case」等。</p>
+                </div>
+
+            </div>
+
+            <h2 class="text-2xl font-bold text-slate-900 mt-10 mb-4 pb-2 border-b border-slate-200">
+                撰寫高效率規範的 3 個黃金法則
+            </h2>
+
+            <ul class="list-disc list-inside space-y-3 text-slate-700">
+                <li>
+                    <strong class="text-slate-900">使用具體 Class 名稱，取代模糊形容詞：</strong> 寫「卡片請用 <code class="bg-slate-100 text-slate-700 font-mono text-xs px-1.5 py-0.5 rounded">rounded-2xl bg-white p-6 border border-slate-200/80 shadow-xs</code>」，不要只寫「請做一個好看的卡片」。
+                </li>
+                <li>
+                    <strong class="text-slate-900">規範相對路徑規則：</strong> 特別強調 <code class="bg-slate-100 text-slate-700 font-mono text-xs px-1.5 py-0.5 rounded">pages/</code> 目錄內的檔案需使用 <code class="bg-slate-100 text-slate-700 font-mono text-xs px-1.5 py-0.5 rounded">../index.html</code> 引用根目錄資源，避免部署到 GitHub Pages 時連結失效。
+                </li>
+                <li>
+                    <strong class="text-slate-900">要求端到端自動更新 (Auto-indexing)：</strong> 要求 AI 不只產生單一頁面，還要把新頁面連回首頁，確保網站導覽體驗完整。
+                </li>
+            </ul>
+
+            <h2 class="text-2xl font-bold text-slate-900 mt-10 mb-4 pb-2 border-b border-slate-200">
+                快速生成的 Prompt 範例
+            </h2>
+
+            <div class="mt-4 p-6 bg-slate-950 text-slate-100 rounded-2xl text-sm font-mono overflow-x-auto shadow-lg border border-slate-800">
+                <span class="text-slate-500"># 如何讓 AI 幫你草擬一份 AGENTS.md</span><br><br>
+                <span class="text-emerald-400">"請根據我目前的專案結構與 UI 風格，寫一份 AGENTS.md 檔案。這份檔案需要包含專案目的、目錄結構、Tailwind 配色與卡片樣式規範，以及 AI 新增內容時必須遵守的命名與相對路徑規則。"</span>
+            </div>
+
+        </article>
+
+    </main>
+
+    <!-- 頁腳 -->
+    <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-800 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6 text-xs sm:text-sm">
+            <div class="flex items-center gap-3">
+                <span class="w-6 h-6 rounded bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-mono font-bold text-xs">KH</span>
+                <span class="text-slate-300 font-medium">AI Knowledge Hub</span>
+                <span class="text-slate-600">|</span>
+                <span>Designed under AGENTS.md framework</span>
+            </div>
+            <p class="text-slate-500 text-xs">
+                &copy; 2026 Knowledge Hub.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
