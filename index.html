@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Knowledge Hub — 數位技術與專案架構筆記</title>
+    <!-- Google Fonts: Plus Jakarta Sans & Playfair Display (人文編輯字體) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            500: '#10b981',
+                            900: '#064e3b',
+                            dark: '#0a0d14'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-[#fcfcfd] text-slate-800 font-sans flex flex-col min-h-screen antialiased selection:bg-slate-900 selection:text-white">
+
+    <!-- 頂部雙層極簡導覽列 (RWD) -->
+    <header class="sticky top-0 z-50 bg-slate-950/85 backdrop-blur-md border-b border-white/10 text-white transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <!-- Brand Monogram -->
+            <a href="index.html" class="flex items-center gap-3 group">
+                <span class="w-8 h-8 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center font-mono font-bold text-sm tracking-tighter group-hover:bg-white group-hover:text-slate-950 transition duration-300">
+                    KH
+                </span>
+                <span class="text-base font-semibold tracking-wide text-slate-100 group-hover:text-white transition">
+                    Knowledge Hub<span class="text-emerald-400">.</span>
+                </span>
+            </a>
+            
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="index.html" class="text-white border-b-2 border-emerald-400 py-1">文章總覽</a>
+                <a href="AGENTS.md" target="_blank" class="text-slate-400 hover:text-slate-100 transition duration-200 flex items-center gap-1.5">
+                    AGENTS.md 開發規範
+                    <svg class="w-3.5 h-3.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                </a>
+            </nav>
+
+            <!-- RWD Mobile Menu Button -->
+            <div class="flex md:hidden">
+                <a href="AGENTS.md" target="_blank" class="text-xs font-mono bg-white/10 hover:bg-white/20 text-white px-3 py-1.5 rounded-full border border-white/20 transition">
+                    AGENTS.md
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+
+        <!-- Hero 區塊：滿版高質感沉浸式背景圖 + 雜誌感排版 -->
+        <section class="relative bg-slate-950 text-white overflow-hidden py-20 sm:py-28 lg:py-32">
+            <!-- 背景影像與多層次暗角疊加 (Unsplash Photo overlay) -->
+            <div class="absolute inset-0 z-0 opacity-40">
+                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1920&auto=format&fit=crop" 
+                     alt="Abstract geometric background" 
+                     class="w-full h-full object-cover object-center filter contrast-125 brightness-90">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-transparent to-slate-950"></div>
+            </div>
+
+            <!-- Hero 主體內容 -->
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-mono mb-6 backdrop-blur-sm">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                        ARCHITECTURE & VIBE CODING NOTES
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-6 leading-[1.1]">
+                        構築重用性的 <br>
+                        <span class="font-serif italic text-emerald-400 font-normal">AI 專案系統</span>
+                    </h1>
+                    
+                    <p class="text-slate-300 text-base sm:text-xl font-normal leading-relaxed mb-8 max-w-2xl">
+                        這是一份探索提示詞工程、Vibe Coding 實戰與 Agent 開發規範的知識庫。所有頁面皆基於 <code class="bg-white/10 text-emerald-300 px-2 py-0.5 rounded text-sm font-mono border border-white/15">AGENTS.md</code> 精確建置。
+                    </p>
+
+                    <!-- 搜尋與統計資訊 -->
+                    <div class="flex flex-wrap items-center gap-6 pt-4 border-t border-white/10 text-xs sm:text-sm font-mono text-slate-400">
+                        <div>收錄文章：<span class="text-white font-semibold">3 篇</span></div>
+                        <div class="w-1 h-1 rounded-full bg-slate-700"></div>
+                        <div>技術架構：<span class="text-white font-semibold">HTML5 / Tailwind CSS</span></div>
+                        <div class="w-1 h-1 rounded-full bg-slate-700"></div>
+                        <div>更新時間：<span class="text-emerald-400 font-semibold">2026 Q4</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 文章清單區塊 (RWD Grid) -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+            
+            <!-- 文章過濾標籤列 -->
+            <div class="flex items-center justify-between border-b border-slate-200 pb-5 mb-10 overflow-x-auto gap-4">
+                <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+                    <button class="px-4 py-2 rounded-lg text-xs font-semibold bg-slate-900 text-white shadow-sm transition">
+                        全部分類
+                    </button>
+                    <button class="px-4 py-2 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">
+                        Vibe Coding
+                    </button>
+                    <button class="px-4 py-2 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">
+                        Agent 規範
+                    </button>
+                    <button class="px-4 py-2 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">
+                        Prompt 工程
+                    </button>
+                </div>
+                <div class="text-xs text-slate-400 font-mono hidden sm:block flex-shrink-0">
+                    顯示 3 篇筆記
+                </div>
+            </div>
+
+            <!-- 卡片網格 (1欄 -> 2欄 -> 3欄) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
+                
+                <!-- 卡片 1: Vibe Coding 實踐指南 -->
+                <article class="group flex flex-col bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-xs hover:shadow-xl hover:-translate-y-1 transition duration-300">
+                    <a href="pages/vibe-coding.html" class="block relative aspect-video overflow-hidden bg-slate-100">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop" 
+                             alt="Code on screen" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition duration-500 ease-out">
+                        <div class="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-md text-emerald-400 text-[11px] font-mono font-medium px-2.5 py-1 rounded-md border border-white/10">
+                            Vibe Coding
+                        </div>
+                    </a>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="text-xs font-mono text-slate-400 mb-2">2026-11-07 • 5 分鐘閱讀</div>
+                            <h2 class="text-xl font-bold text-slate-900 group-hover:text-emerald-600 transition mb-3 leading-snug">
+                                <a href="pages/vibe-coding.html">Vibe Coding 實踐指南：從自然語言到產品落地</a>
+                            </h2>
+                            <p class="text-slate-600 text-sm leading-relaxed line-clamp-3 mb-6">
+                                探討如何擺脫傳統一行行寫程式碼的束縛，透過精確的 Prompt 語境與結構化規範（AGENTS.md），讓 AI 成為敏捷開發的最佳助手。
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-900 group-hover:text-emerald-600 transition">
+                            <span>閱讀完整內容</span>
+                            <svg class="w-4 h-4 transform group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 卡片 2: AGENTS.md 設計指南 -->
+                <article class="group flex flex-col bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-xs hover:shadow-xl hover:-translate-y-1 transition duration-300">
+                    <a href="pages/agents-guide.html" class="block relative aspect-video overflow-hidden bg-slate-100">
+                        <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=800&auto=format&fit=crop" 
+                             alt="Design Architecture" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition duration-500 ease-out">
+                        <div class="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-md text-blue-400 text-[11px] font-mono font-medium px-2.5 py-1 rounded-md border border-white/10">
+                            Agent 規範
+                        </div>
+                    </a>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="text-xs font-mono text-slate-400 mb-2">2026-11-07 • 7 分鐘閱讀</div>
+                            <h2 class="text-xl font-bold text-slate-900 group-hover:text-emerald-600 transition mb-3 leading-snug">
+                                <a href="pages/agents-guide.html">如何設計一份高效率的 AGENTS.md / CLAUDE.md</a>
+                            </h2>
+                            <p class="text-slate-600 text-sm leading-relaxed line-clamp-3 mb-6">
+                                拆解 CLAUDE.md 與 AGENTS.md 的核心要素，包含 Code Base 結構說明、視覺 Style Guide 及 AI 修改與連鎖更新範本。
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-900 group-hover:text-emerald-600 transition">
+                            <span>閱讀完整內容</span>
+                            <svg class="w-4 h-4 transform group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 卡片 3: Prompt 工程指南 -->
+                <article class="group flex flex-col bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-xs hover:shadow-xl hover:-translate-y-1 transition duration-300">
+                    <a href="pages/prompt-guide.html" class="block relative aspect-video overflow-hidden bg-slate-100">
+                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop" 
+                             alt="Abstract lines" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition duration-500 ease-out">
+                        <div class="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-md text-purple-400 text-[11px] font-mono font-medium px-2.5 py-1 rounded-md border border-white/10">
+                            Prompt 工程
+                        </div>
+                    </a>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="text-xs font-mono text-slate-400 mb-2">2026-11-07 • 4 分鐘閱讀</div>
+                            <h2 class="text-xl font-bold text-slate-900 group-hover:text-emerald-600 transition mb-3 leading-snug">
+                                <a href="pages/prompt-guide.html">提示詞工程指南：LLM 溝通與結構化輸出實戰</a>
+                            </h2>
+                            <p class="text-slate-600 text-sm leading-relaxed line-clamp-3 mb-6">
+                                掌握 Prompt Engineering 四大原則，學習如何精確控制 LLM 的回答風格、格式與減少幻覺發生的技巧。
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-900 group-hover:text-emerald-600 transition">
+                            <span>閱讀完整內容</span>
+                            <svg class="w-4 h-4 transform group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 頁腳 (Minimal Editorial Footer) -->
+    <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6 text-xs sm:text-sm">
+            <div class="flex items-center gap-3">
+                <span class="w-6 h-6 rounded bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-mono font-bold text-xs">KH</span>
+                <span class="text-slate-300 font-medium">AI Knowledge Hub</span>
+                <span class="text-slate-600">|</span>
+                <span>Designed under AGENTS.md framework</span>
+            </div>
+            <p class="text-slate-500 text-xs">
+                &copy; 2026 Knowledge Hub.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
